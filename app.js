@@ -4,7 +4,7 @@ const app = express();
 let requisitador = axios.create()
 
 
-requisitador.get('https://pokeapi.co/api/v2/pokemon').then((listaDePokemons) => {
+requisitador.get('https://pokeapi.co/api/v2/pokemon?offset=1&limit=1118').then((listaDePokemons) => {
     app.get('/pokemon', (req, res) =>{
         const {nome} = req.query
         let listaRetorno = listaDePokemons.data.results.filter(i => i.name.includes(nome || ''))
